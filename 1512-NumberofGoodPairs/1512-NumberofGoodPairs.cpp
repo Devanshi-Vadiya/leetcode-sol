@@ -1,25 +1,23 @@
-// Last updated: 5/11/2026, 8:21:11 PM
+// Last updated: 5/12/2026, 10:39:13 PM
 1class Solution {
 2public:
-3
-4    int numIdenticalPairs(vector<int>& nums) {
-5
-6        // HashMap:
-7        // number -> frequency
-8        unordered_map<int, int> freq;
-9
-10        int count = 0;
+3    int numIdenticalPairs(vector<int>& nums) {
+4        
+5        //hashmap
+6        unordered_map<int,int> freq;
+7        //trasversing thru the array
+8
+9        int count = 0;
+10        for(int i =0;i<nums.size();i++){
 11
-12        // Traverse through array
-13        for(int i = 0; i < nums.size(); i++) {
+12            //add previous freq to count 
+13            count += freq[nums[i]];
 14
-15            // Add previous frequency to count
-16            count += freq[nums[i]];
-17
-18            // Increase frequency
-19            freq[nums[i]]++;
-20        }
-21
-22        return count;
-23    }
-24};
+15            //increase in freq
+16
+17            freq[nums[i]]++;
+18
+19        }
+20        return count;
+21    }
+22};
