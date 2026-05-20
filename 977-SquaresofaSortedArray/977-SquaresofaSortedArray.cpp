@@ -1,4 +1,4 @@
-// Last updated: 5/20/2026, 4:50:00 PM
+// Last updated: 5/20/2026, 4:57:28 PM
 1class Solution {
 2public:
 3    vector<int> sortedSquares(vector<int>& nums) {
