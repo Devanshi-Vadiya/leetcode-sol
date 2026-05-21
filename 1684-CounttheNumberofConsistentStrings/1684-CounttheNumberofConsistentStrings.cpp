@@ -1,13 +1,11 @@
-// Last updated: 5/21/2026, 10:15:42 PM
+// Last updated: 5/21/2026, 10:16:40 PM
 1class Solution {
 2public:
-3    string toLowerCase(string s) {
-4        for(int i = 0; i < s.length(); i++) {
-5            if(s[i] >= 'A' && s[i] <= 'Z') {
-6                s[i] = s[i] + 32;
-7            }
-8        }
-9
-10        return s;
-11    }
-12};
+3    int findLUSlength(string a, string b) {
+4        if(a == b) {
+5            return -1;
+6        }
+7
+8        return max(a.length(), b.length());
+9    }
+10};
