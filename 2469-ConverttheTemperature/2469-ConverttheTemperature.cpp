@@ -1,7 +1,14 @@
-// Last updated: 5/23/2026, 10:16:32 PM
+// Last updated: 5/23/2026, 10:27:52 PM
 1class Solution {
 2public:
-3    int countOdds(int low, int high) {
-4        return (high + 1) / 2 - low / 2;
-5    }
-6};
+3    int sumBase(int n, int k) {
+4        int sum = 0;
+5
+6        while(n > 0) {
+7            sum += n % k;
+8            n = n / k;
+9        }
+10
+11        return sum;
+12    }
+13};
