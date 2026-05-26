@@ -1,4 +1,4 @@
-// Last updated: 5/26/2026, 1:30:41 PM
+// Last updated: 5/26/2026, 1:31:16 PM
 1class Solution {
 2public:
 3    int searchInsert(vector<int>& nums, int target) {
