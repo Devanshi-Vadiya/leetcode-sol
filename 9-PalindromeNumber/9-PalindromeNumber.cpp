@@ -1,20 +1,18 @@
-// Last updated: 5/27/2026, 10:41:12 PM
+// Last updated: 5/28/2026, 12:53:01 AM
 1class Solution {
 2public:
-3    bool isPalindrome(int x) {
-4        if(x<0){
-5            return false;
-6        }
+3    int reverse(int x) {
+4        int ans = 0, rem;
+5
+6        while(x){
 7
-8        long long originalNumber = x;
-9        long long reversedNumber =0;
-10
-11        while(x>0){
-12            int lastDigit =x%10; 
-13            reversedNumber = reversedNumber *10 + lastDigit;
-14            x = x / 10;
-15        }
-16        return originalNumber == reversedNumber;
-17    }
-18};
-19
+8            rem = x%10;
+9            if(ans>INT_MAX/10  || ans< INT_MIN/10  )
+10           { return 0;
+11           }
+12            ans=ans*10+rem;
+13            x/=10;
+14        }
+15        return ans;
+16    }
+17};
