@@ -1,19 +1,20 @@
-// Last updated: 4/24/2026, 5:06:45 PM
-class Solution {
-public:
-    bool isPalindrome(int x) {
-
-        if (x < 0 || (x % 10 == 0 && x != 0))
-            return false;
-
-        int reversed = 0;
-
-        while (x > reversed) {
-            int digit = x % 10;
-            reversed = reversed * 10 + digit;
-            x /= 10;
-        }
-
-        return (x == reversed) || (x == reversed / 10);
-    }
-};
+// Last updated: 5/27/2026, 10:41:12 PM
+1class Solution {
+2public:
+3    bool isPalindrome(int x) {
+4        if(x<0){
+5            return false;
+6        }
+7
+8        long long originalNumber = x;
+9        long long reversedNumber =0;
+10
+11        while(x>0){
+12            int lastDigit =x%10; 
+13            reversedNumber = reversedNumber *10 + lastDigit;
+14            x = x / 10;
+15        }
+16        return originalNumber == reversedNumber;
+17    }
+18};
+19
