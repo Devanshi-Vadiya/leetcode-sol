@@ -1,27 +1,40 @@
-// Last updated: 6/6/2026, 11:10:53 AM
+// Last updated: 6/6/2026, 11:36:57 AM
 1class Solution {
 2public:
 3    string removeDuplicates(string s, int k) {
-4        string ans;
-5        vector<int> count;
+4
+5        stack<pair<char,int>> st;
 6
 7        for(char ch : s) {
-8            ans.push_back(ch);
-9
-10            if(ans.size() == 1 || ans.back() != ans[ans.size() - 2]) {
-11                count.push_back(1);
-12            } else {
-13                count.push_back(count.back() + 1);
+8
+9            if(!st.empty() && st.top().first == ch) {
+10                st.top().second++;
+11            }
+12            else {
+13                st.push({ch,1});
 14            }
 15
-16            if(count.back() == k) {
-17                for(int i = 0; i < k; i++) {
-18                    ans.pop_back();
-19                    count.pop_back();
-20                }
-21            }
-22        }
-23
-24        return ans;
-25    }
-26};
+16            if(st.top().second == k) {
+17                st.pop();
+18            }
+19        }
+20
+21        string ans = "";
+22
+23        while(!st.empty()) {
+24
+25            char ch = st.top().first;
+26            int cnt = st.top().second;
+27
+28            while(cnt--) {
+29                ans += ch;
+30            }
+31
+32            st.pop();
+33        }
+34
+35        reverse(ans.begin(), ans.end());
+36
+37        return ans;
+38    }
+39};
