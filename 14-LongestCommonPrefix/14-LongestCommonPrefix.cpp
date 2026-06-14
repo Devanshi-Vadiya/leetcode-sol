@@ -1,23 +1,20 @@
-// Last updated: 6/14/2026, 5:36:05 PM
+// Last updated: 6/14/2026, 5:56:20 PM
 1class Solution {
 2public:
-3    int majorityElement(vector<int>& nums) {
-4        int candidate = 0;
-5        int count = 0;
-6
-7        for (int num : nums) {
-8
-9            if (count == 0) {
-10                candidate = num;
-11            }
-12
-13            if (num == candidate) {
-14                count++;
-15            } else {
-16                count--;
-17            }
-18        }
-19
-20        return candidate;
-21    }
-22};
+3    bool isUgly(int n) {
+4        
+5        if(n<=0){
+6            return false;
+7        }
+8        while(n%2 ==0){
+9            n/=2;
+10        }
+11        while(n%3 ==0){
+12            n/=3;
+13        }
+14        while(n%5 ==0){
+15            n/=5;
+16        }
+17        return n == 1;
+18    }
+19};
