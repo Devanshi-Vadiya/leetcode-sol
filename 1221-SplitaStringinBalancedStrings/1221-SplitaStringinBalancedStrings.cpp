@@ -1,4 +1,4 @@
-// Last updated: 6/17/2026, 11:20:05 AM
+// Last updated: 6/17/2026, 11:32:41 AM
 1class Solution {
 2public:
 3    string simplifyPath(string path) {
