@@ -1,4 +1,4 @@
-// Last updated: 6/25/2026, 9:04:07 AM
+// Last updated: 6/25/2026, 9:04:13 AM
 1class Solution {
 2public:
 3    int digitFrequencyScore(int n) {
