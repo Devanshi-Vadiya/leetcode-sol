@@ -1,21 +1,20 @@
-// Last updated: 6/29/2026, 10:52:48 AM
+// Last updated: 6/29/2026, 10:53:03 AM
 1class Solution {
 2public:
-3    int mySqrt(int x) {
-4        long long left = 0, right = x;
-5        int ans = 0;
-6
-7        while (left <= right) {
-8            long long mid = left + (right - left) / 2;
-9
-10            if (mid * mid <= x) {
-11                ans = mid;
-12                left = mid + 1;
-13            } else {
-14                right = mid - 1;
-15            }
-16        }
-17
-18        return ans;
-19    }
-20};
+3    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+4        int i = m - 1;
+5        int j = n - 1;
+6        int k = m + n - 1;
+7
+8        while (i >= 0 && j >= 0) {
+9            if (nums1[i] > nums2[j])
+10                nums1[k--] = nums1[i--];
+11            else
+12                nums1[k--] = nums2[j--];
+13        }
+14
+15        while (j >= 0) {
+16            nums1[k--] = nums2[j--];
+17        }
+18    }
+19};
