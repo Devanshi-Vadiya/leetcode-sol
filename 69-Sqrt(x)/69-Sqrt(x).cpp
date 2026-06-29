@@ -1,26 +1,15 @@
-// Last updated: 6/29/2026, 10:53:48 AM
+// Last updated: 6/29/2026, 10:54:30 AM
 1class Solution {
 2public:
-3    int squareSum(int n) {
-4        int sum = 0;
-5
-6        while (n > 0) {
-7            int digit = n % 10;
-8            sum += digit * digit;
-9            n /= 10;
+3    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+4        unordered_set<int> s(nums1.begin(), nums1.end());
+5        unordered_set<int> ans;
+6
+7        for (int num : nums2) {
+8            if (s.count(num))
+9                ans.insert(num);
 10        }
 11
-12        return sum;
+12        return vector<int>(ans.begin(), ans.end());
 13    }
-14
-15    bool isHappy(int n) {
-16        unordered_set<int> visited;
-17
-18        while (n != 1 && !visited.count(n)) {
-19            visited.insert(n);
-20            n = squareSum(n);
-21        }
-22
-23        return n == 1;
-24    }
-25};
+14};
