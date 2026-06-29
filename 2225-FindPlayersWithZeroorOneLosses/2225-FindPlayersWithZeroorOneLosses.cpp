@@ -1,14 +1,29 @@
-// Last updated: 6/29/2026, 10:40:31 AM
+// Last updated: 6/29/2026, 10:41:08 AM
 1class Solution {
 2public:
-3    vector<long long> sumOfThree(long long num) {
+3    bool sumOfNumberAndReverse(int num) {
 4
-5        if(num % 3 != 0){
-6            return {};
-7        }
-8
-9        long long x = num / 3;
-10
-11        return {x - 1, x, x + 1};
-12    }
-13};
+5        for(int i = 0; i <= num; i++) {
+6
+7            int sum = 0;
+8            int x = i;
+9
+10            // reverse x
+11            while(x > 0) {
+12
+13                int rem = x % 10;
+14
+15                sum = sum * 10 + rem;
+16
+17                x = x / 10;
+18            }
+19
+20            // check condition
+21            if(i + sum == num) {
+22                return true;
+23            }
+24        }
+25
+26        return false;
+27    }
+28};
