@@ -1,31 +1,21 @@
-// Last updated: 6/29/2026, 10:57:17 AM
+// Last updated: 6/29/2026, 11:06:55 AM
 1class Solution {
 2public:
-3    vector<int> relativeSortArray(vector<int>& arr1, vector<int>& arr2) {
-4        unordered_map<int, int> freq;
-5
-6        for (int num : arr1)
-7            freq[num]++;
-8
-9        vector<int> ans;
-10
-11        for (int num : arr2) {
-12            while (freq[num]--) {
-13                ans.push_back(num);
-14            }
-15        }
-16
-17        vector<int> rem;
-18
-19        for (auto &p : freq) {
-20            while (p.second-- > 0)
-21                rem.push_back(p.first);
-22        }
-23
-24        sort(rem.begin(), rem.end());
-25
-26        ans.insert(ans.end(), rem.begin(), rem.end());
-27
-28        return ans;
-29    }
-30};
+3    vector<int> arrayRankTransform(vector<int>& arr) {
+4        vector<int> temp = arr;
+5        sort(temp.begin(), temp.end());
+6
+7        unordered_map<int, int> rank;
+8        int r = 1;
+9
+10        for (int num : temp) {
+11            if (!rank.count(num))
+12                rank[num] = r++;
+13        }
+14
+15        for (int i = 0; i < arr.size(); i++)
+16            arr[i] = rank[arr[i]];
+17
+18        return arr;
+19    }
+20};
