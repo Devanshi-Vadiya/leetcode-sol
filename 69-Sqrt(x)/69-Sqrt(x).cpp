@@ -1,15 +1,20 @@
-// Last updated: 6/29/2026, 10:54:30 AM
+// Last updated: 6/29/2026, 10:55:32 AM
 1class Solution {
 2public:
-3    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
-4        unordered_set<int> s(nums1.begin(), nums1.end());
-5        unordered_set<int> ans;
-6
-7        for (int num : nums2) {
-8            if (s.count(num))
-9                ans.insert(num);
-10        }
-11
-12        return vector<int>(ans.begin(), ans.end());
-13    }
-14};
+3    vector<string> fizzBuzz(int n) {
+4        vector<string> ans;
+5
+6        for (int i = 1; i <= n; i++) {
+7            if (i % 15 == 0)
+8                ans.push_back("FizzBuzz");
+9            else if (i % 3 == 0)
+10                ans.push_back("Fizz");
+11            else if (i % 5 == 0)
+12                ans.push_back("Buzz");
+13            else
+14                ans.push_back(to_string(i));
+15        }
+16
+17        return ans;
+18    }
+19};
