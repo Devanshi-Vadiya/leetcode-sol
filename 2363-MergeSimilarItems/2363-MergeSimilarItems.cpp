@@ -1,17 +1,14 @@
-// Last updated: 7/9/2026, 2:33:39 PM
+// Last updated: 7/9/2026, 2:33:59 PM
 1class Solution {
 2public:
-3    int alternateDigitSum(int n) {
-4        string s = to_string(n);
-5        int sum = 0;
-6
-7        for (int i = 0; i < s.size(); i++) {
-8            if (i % 2 == 0)
-9                sum += s[i] - '0';
-10            else
-11                sum -= s[i] - '0';
-12        }
-13
-14        return sum;
-15    }
-16};
+3    int buyChoco(vector<int>& prices, int money) {
+4        sort(prices.begin(), prices.end());
+5
+6        int cost = prices[0] + prices[1];
+7
+8        if (cost <= money)
+9            return money - cost;
+10
+11        return money;
+12    }
+13};
