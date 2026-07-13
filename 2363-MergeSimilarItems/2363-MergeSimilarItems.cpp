@@ -1,18 +1,20 @@
-// Last updated: 7/9/2026, 2:36:04 PM
+// Last updated: 7/13/2026, 10:04:58 AM
 1class Solution {
 2public:
-3    string triangleType(vector<int>& nums) {
-4        sort(nums.begin(), nums.end());
+3    vector<vector<int>> mergeSimilarItems(vector<vector<int>>& items1, vector<vector<int>>& items2) {
+4        map<int, int> mp;
 5
-6        if (nums[0] + nums[1] <= nums[2])
-7            return "none";
+6        for (auto &v : items1)
+7            mp[v[0]] += v[1];
 8
-9        if (nums[0] == nums[1] && nums[1] == nums[2])
-10            return "equilateral";
+9        for (auto &v : items2)
+10            mp[v[0]] += v[1];
 11
-12        if (nums[0] == nums[1] || nums[1] == nums[2] || nums[0] == nums[2])
-13            return "isosceles";
-14
-15        return "scalene";
-16    }
-17};
+12        vector<vector<int>> ans;
+13
+14        for (auto it : mp)
+15            ans.push_back({it.first, it.second});
+16
+17        return ans;
+18    }
+19};
