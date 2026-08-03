@@ -1,4 +1,4 @@
-// Last updated: 8/3/2026, 1:53:57 PM
+// Last updated: 8/3/2026, 1:56:15 PM
 1/**
 2 * Definition for singly-linked list.
 3 * struct ListNode {
@@ -12,17 +12,27 @@
 11
 12class Solution {
 13public:
-14    ListNode* reverseList(ListNode* head) {
-15        ListNode* prev = nullptr;
-16        ListNode* curr = head;
+14    ListNode* removeNthFromEnd(ListNode* head, int n) {
+15        ListNode dummy(0);
+16        dummy.next = head;
 17
-18        while (curr != nullptr) {
-19            ListNode* nextNode = curr->next;
-20            curr->next = prev;
-21            prev = curr;
-22            curr = nextNode;
-23        }
-24
-25        return prev;
-26    }
-27};
+18        ListNode* fast = &dummy;
+19        ListNode* slow = &dummy;
+20
+21        // Move fast n+1 steps ahead
+22        for (int i = 0; i <= n; i++) {
+23            fast = fast->next;
+24        }
+25
+26        // Move both pointers
+27        while (fast != nullptr) {
+28            fast = fast->next;
+29            slow = slow->next;
+30        }
+31
+32        // Delete the nth node from end
+33        slow->next = slow->next->next;
+34
+35        return dummy.next;
+36    }
+37};
