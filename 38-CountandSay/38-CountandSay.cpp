@@ -1,38 +1,33 @@
-// Last updated: 8/6/2026, 5:00:58 PM
-1class Solution {
-2public:
-3    string countAndSay(int n) {
-4
-5        // First term of the sequence
-6        string ans = "1";
-7
-8        // Generate terms from 2 to n
-9        for (int i = 2; i <= n; i++) {
-10
-11            string temp = "";
-12            int count = 1;
-13
-14            // Read the current string (ans)
-15            for (int j = 1; j < ans.size(); j++) {
+// Last updated: 8/6/2026, 5:21:09 PM
+1/**
+2 * Definition for singly-linked list.
+3 * struct ListNode {
+4 *     int val;
+5 *     ListNode *next;
+6 *     ListNode() : val(0), next(nullptr) {}
+7 *     ListNode(int x) : val(x), next(nullptr) {}
+8 *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+9 * };
+10 */
+11class Solution {
+12public:
+13    ListNode* swapPairs(ListNode* head) {
+14        ListNode dummy(0);
+15        dummy.next = head;
 16
-17                if (ans[j] == ans[j - 1]) {
-18                    count++;
-19                }
-20                else {
-21                    temp += to_string(count);
-22                    temp += ans[j - 1];
-23                    count = 1;
-24                }
-25            }
+17        ListNode* prev = &dummy;
+18
+19        while (prev->next && prev->next->next) {
+20            ListNode* first = prev->next;
+21            ListNode* second = first->next;
+22
+23            first->next = second->next;
+24            second->next = first;
+25            prev->next = second;
 26
-27            // Add the last group
-28            temp += to_string(count);
-29            temp += ans.back();
-30
-31            // Update ans for the next iteration
-32            ans = temp;
-33        }
-34
-35        return ans;
-36    }
-37};
+27            prev = first;
+28        }
+29
+30        return dummy.next;
+31    }
+32};
