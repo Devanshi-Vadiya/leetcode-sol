@@ -1,19 +1,22 @@
-// Last updated: 7/15/2026, 5:25:29 PM
+// Last updated: 8/8/2026, 4:39:48 PM
 1class Solution {
 2public:
-3    vector<int> twoSum(vector<int>& nums, int target) {
-4        unordered_map<int, int> mp; // value -> index
-5        
-6        for(int i = 0; i < nums.size(); i++) {
-7            int complement = target - nums[i];
-8            
-9            if(mp.find(complement) != mp.end()) {
-10                return {mp[complement], i};
-11            }
-12            
-13            mp[nums[i]] = i;
-14        }
-15        
-16        return {}; // if no solution
-17    }
-18};
+3    bool hasCycle(ListNode *head) {
+4
+5        ListNode *slow = head;
+6        ListNode *fast = head;
+7
+8        while(fast != nullptr && fast->next != nullptr)
+9        {
+10            slow = slow->next;
+11            fast = fast->next->next;
+12
+13            if(slow == fast)
+14            {
+15                return true;
+16            }
+17        }
+18
+19        return false;
+20    }
+21};
