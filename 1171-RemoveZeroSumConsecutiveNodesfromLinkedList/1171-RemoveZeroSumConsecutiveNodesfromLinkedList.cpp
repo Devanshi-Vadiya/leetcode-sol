@@ -1,23 +1,32 @@
-// Last updated: 8/19/2026, 2:07:40 PM
-1/**
-2 * Definition for singly-linked list.
-3 * struct ListNode {
-4 *     int val;
-5 *     ListNode *next;
-6 *     ListNode() : val(0), next(nullptr) {}
-7 *     ListNode(int x) : val(x), next(nullptr) {}
-8 *     ListNode(int x, ListNode *next) : val(x), next(next) {}
-9 * };
-10 */
-11class Solution {
-12public:
-13    ListNode* middleNode(ListNode* head) {
-14        ListNode * fast = head ;
-15        ListNode * slow = head ;
-16       while(fast != nullptr && fast->next != nullptr){
-17            fast = fast->next->next ;
-18            slow = slow->next ;
-19        } 
-20        return slow ;
-21    }
-22};
+// Last updated: 8/19/2026, 2:15:59 PM
+1class Solution {
+2public:
+3    ListNode* removeZeroSumSublists(ListNode* head) {
+4        ListNode* dummy = new ListNode(0);
+5        dummy->next = head;
+6
+7        unordered_map<int, ListNode*> mp;
+8
+9        int sum = 0;
+10        ListNode* curr = dummy;
+11
+12        while (curr != nullptr) {
+13            sum += curr->val;
+14            mp[sum] = curr;
+15            curr = curr->next;
+16        }
+17
+18        sum = 0;
+19        curr = dummy;
+20
+21        while (curr != nullptr) {
+22            sum += curr->val;
+23
+24            curr->next = mp[sum]->next;
+25
+26            curr = curr->next;
+27        }
+28
+29        return dummy->next;
+30    }
+31};
