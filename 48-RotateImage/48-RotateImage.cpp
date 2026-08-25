@@ -1,36 +1,42 @@
-// Last updated: 8/25/2026, 2:00:22 PM
-1 
-2class Solution { 
-3public: 
-4    vector<int> findDiagonalOrder(vector<vector<int>>& mat) { 
-5        int m = mat.size(); 
-6        int n = mat[0].size(); 
-7         
-8        map<int, vector<int>> mp; 
-9         
-10        vector<int> result; 
-11         
-12        //fill the map using [i+j] 
-13        for(int i = 0; i<m; i++) { 
-14            for(int j = 0; j<n; j++) { 
-15                mp[i+j].push_back(mat[i][j]); 
-16            } 
-17        } 
-18         
-19        bool flip = true; 
-20        for(auto &it : mp) { 
-21            if(flip) { 
-22                //it.second ko reverse kardo 
-23                reverse(it.second.begin(), it.second.end()); 
-24            } 
-25             
-26            for(int &num : it.second) { 
-27                result.push_back(num); 
-28            } 
-29             
-30            flip = !flip; 
-31        } 
-32         
-33        return result; 
-34    } 
-35}; 
+// Last updated: 8/25/2026, 2:28:05 PM
+1class Solution {
+2public:
+3    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+4        stack<int> s1, s2;
+5
+6        while (l1) {
+7            s1.push(l1->val);
+8            l1 = l1->next;
+9        }
+10
+11        while (l2) {
+12            s2.push(l2->val);
+13            l2 = l2->next;
+14        }
+15
+16        int carry = 0;
+17        ListNode* head = nullptr;
+18
+19        while (!s1.empty() || !s2.empty() || carry) {
+20            int sum = carry;
+21
+22            if (!s1.empty()) {
+23                sum += s1.top();
+24                s1.pop();
+25            }
+26
+27            if (!s2.empty()) {
+28                sum += s2.top();
+29                s2.pop();
+30            }
+31
+32            carry = sum / 10;
+33
+34            ListNode* node = new ListNode(sum % 10);
+35            node->next = head;
+36            head = node;
+37        }
+38
+39        return head;
+40    }
+41};
